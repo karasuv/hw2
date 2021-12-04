@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductRepository {
@@ -20,5 +21,8 @@ public class ProductRepository {
         );
     }
 
+    public Optional<Product> findProductById(Integer id){
+        return productList.stream().filter(product -> product.getId().equals(id)).findFirst();
+    }
 
 }
