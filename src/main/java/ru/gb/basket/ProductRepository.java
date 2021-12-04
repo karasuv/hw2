@@ -20,7 +20,8 @@ public class ProductRepository {
                 new Product(5,"апельсин 1кг",99.0f)
         );
     }
-
+/// Optional -  это что за опция ?  почитал в инете, то как-то этого не хватило
+    //   если простыми словами, то как это описать?
     public Optional<Product> findProductById(Integer id){
         return productList.stream().filter(product -> product.getId().equals(id)).findFirst();
     }
