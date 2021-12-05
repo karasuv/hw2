@@ -1,6 +1,29 @@
 package ru.gb.basket;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Optional;
+
+@Component
 public class ProductRepository {
-    
+    private List<Product> productList;
+
+    @PostConstruct
+    public void init(){
+        productList = List.of(
+                new Product(1,"Сайра",159.0f),
+                new Product(2,"яблоко 1кг",129.0f),
+                new Product(3,"йогурт",39.0f),
+                new Product(4,"Кефир",89.0f),
+                new Product(5,"апельсин 1кг",99.0f)
+        );
+    }
+/// Optional -  это что за опция ?  почитал в инете, то как-то этого не хватило
+    //   если простыми словами, то как это описать?
+    public Optional<Product> findProductById(Integer id){
+        return productList.stream().filter(product -> product.getId().equals(id)).findFirst();
+    }
 
 }
